@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UOG CGPA Calculator</title>
+    <!-- Link to the external stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="st-general-main-container">
+    <div class="st-general-header">
+      <span class="st-general-title">UOG CGPA Calculator</span>
+      <p class="st-general-subtitle">
+        Calculate your semester GPA and cumulative CGPA according to the
+        University of Gujrat grading scheme.
+      </p>
+    </div>
+    <div class="uog-calc-main">
+      <!-- Grade format selector -->
+      <div class="uog-calc-grade-format-section">
+        <label for="uog-calc-grade-format" class="uog-calc-label"
+          >Grade Format:</label
+        >
+        <select id="uog-calc-grade-format" class="st-general-select">
+          <option value="Letter" selected>Letter</option>
+          <option value="Percentage">Percentage</option>
+          <option value="Point">Point</option>
+        </select>
+      </div>
+      <!-- Container for dynamic semester sections -->
+      <div id="uog-calc-semesters-container" class="uog-calc-semesters"></div>
+      <!-- Controls for adding semesters and initiating calculation -->
+      <div class="uog-calc-controls">
+        <button id="uog-calc-add-semester" type="button" class="st-general-btn">
+          <i class="fa-solid fa-plus"></i>
+          Add Semester
+        </button>
+        <button
+          id="uog-calc-calculate"
+          type="button"
+          class="st-general-btn st-main-calculation-btn"
+        >
+          <i class="fa-solid fa-calculator"></i>
+          Calculate
+        </button>
+      </div>
+
+      <!-- Optional current cumulative information section -->
+      <section
+        id="uog-calc-cumulative-section"
+        class="uog-calc-cumulative-section"
+      >
+        <h2 class="uog-calc-cumulative-title">
+          Current Cumulative Information (Optional)
+        </h2>
+        <div class="uog-calc-cumulative-fields">
+          <input
+            type="number"
+            step="0.01"
+            min="0"
+            max="4"
+            id="uog-calc-current-cgpa"
+            class="st-general-input uog-calc-current-cgpa"
+            placeholder="Current CGPA"
+          />
+          <input
+            type="number"
+            step="1"
+            min="0"
+            id="uog-calc-completed-credits"
+            class="st-general-input uog-calc-completed-credits"
+            placeholder="Credits Completed"
+          />
+        </div>
+        <p class="uog-calc-helper-text">Leave blank if starting fresh.</p>
+      </section>
+      <!-- Result container (hidden until after calculation) -->
+      <section
+        id="uog-calc-result"
+        class="uog-calc-result-section uog-calc-hidden"
+      ></section>
+      <!-- Action buttons for export and reset (hidden until after calculation) -->
+      <div id="uog-calc-actions" class="uog-calc-actions uog-calc-hidden">
+        <button
+          id="uog-calc-copy"
+          type="button"
+          class="st-general-btn st-copy-btn"
+        >
+          <i class="fa-regular fa-copy"></i>
+          Copy
+        </button>
+        <button
+          id="uog-calc-reset"
+          type="button"
+          class="st-general-btn st-main-reset-btn"
+        >
+          <i class="fa-solid fa-arrows-rotate"></i>
+          Reset
+        </button>
+      </div>
+
+      <!-- Loading overlay for grade format conversion -->
+      <div id="uog-calc-loading" class="uog-calc-loading uog-calc-hidden">
+        <div class="uog-calc-loading-text">Updating grade inputs…</div>
+      </div>
+    </div>
+    <!-- Include the JavaScript logic -->
+    <script src="script.js"></script>
+  </body>
+</html>
